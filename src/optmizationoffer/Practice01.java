@@ -1,4 +1,4 @@
-package offer;
+package optmizationoffer;
 
 public class Practice01 {
 

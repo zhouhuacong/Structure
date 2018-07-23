@@ -1,11 +1,6 @@
-package offer;
+package optmizationoffer;
 
-import java.util.LinkedList;
-
-/**
- * 单链表翻转
- */
-public class ReverseSingleLinkList {
+public class practices03 {
 
   public static void main(String args[]) {
     Node head = new Node(0);
@@ -25,7 +20,7 @@ public class ReverseSingleLinkList {
       h = h.getNext();
     }
 
-    head = reversal(head);
+    head = recursiveList(head);
     System.out.println("\n ----------------------- \n");
     while (null != head) {
       System.out.println(head.getData() + "");
@@ -33,30 +28,33 @@ public class ReverseSingleLinkList {
     }
   }
 
-  private static Node reversal(Node head) {
+  public static Node reseredList(Node head) {
+    if (head == null) {
+      return head;
+    }
+    Node preNode = null;
+    Node curNode = head;
+    Node reservedHead = null;
+    while (curNode != null) {
+      Node nextNode = curNode.getNext();
+      if (nextNode == null) {
+        reservedHead = curNode;
+      }
+      curNode.setNext(preNode);
+      preNode = curNode;
+      curNode = nextNode;
+    }
+    return reservedHead;
+  }
+
+  public static Node recursiveList(Node head) {
     if (head == null || head.getNext() == null) {
       return head;
     }
-    Node reHead = reversal(head.getNext());
-    head.getNext().setNext(head);
+    Node nextNode = head.getNext();
+    Node end = recursiveList(nextNode);
+    nextNode.setNext(head);
     head.setNext(null);
-    return reHead;
+    return end;
   }
-
-  private static Node reversal2(Node head) {
-    if (head == null || head.getNext() == null) {
-      return head;
-    }
-    Node pre = head;
-    Node cur = head.getNext();
-    Node tmp;
-    while (cur != null) {
-      tmp = cur.getNext();
-      cur.setNext(pre);
-      pre = cur;
-      cur = tmp;
-    }
-    return null;
-  }
-
 }

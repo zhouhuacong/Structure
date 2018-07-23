@@ -1,6 +1,6 @@
-package offer.num25;
+package optmizationoffer.num25;
 
-import offer.Node;
+import optmizationoffer.Node;
 
 public class CombinLinkedList {
 
